@@ -1,39 +1,34 @@
-import { createSlice,nanoid } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const initialState={
-    posts:[{
-        title:null,
-        description:null,
-        price:null,
-        slug:null,
-        featuredImage:null,
-        userId:null
-    }]
+const initialState = {
+    posts: []  // Start with an empty array instead of an array with a single object
 }
-const postSlice=createSlice({
-    name:"post",
+
+const postSlice = createSlice({
+    name: "post",
     initialState,
-    reducers:{
-        createPost:(state,action)=>{
-            state.posts.push(action.payload)
+    reducers: {
+        createPost: (state, action) => {
+            state.posts.push(action.payload);
         },
-        updatePost:(state,action)=>{
-            state.posts.forEach((post)=>{
-                if (post.slug === action.payload.slug) {
-                    post.title = action.payload.title;
-                    post.description = action.payload.description;
-                    post.price=action.payload.price;
-                    post.featuredImage = action.payload.featuredImage;
-                    post.status = action.payload.status;
-                    post.userId = action.payload.userId;
-                }
-            })
+        updatePost: (state, action) => {
+            const { slug, title, description, price, featuredImage, status, userId } = action.payload;
+            const post = state.posts.find(post => post.slug === slug);
+            if (post) {
+                post.title = title;
+                post.description = description;
+                post.price = price;
+                post.featuredImage = featuredImage;
+                post.status = status;
+                post.userId = userId;
+            }
         },
-        deletePost:(state,action)=>{
-            state.posts=state.posts.filter((post)=>post.slug!==action.payload)
+        deletePost: (state, action) => {
+            const slug = action.payload.slug;  // Correctly extract slug from the payload
+            state.posts = state.posts.filter(post => post.slug !== slug);
         }
     }
-})
+});
 
-export const{createPost,updatePost,deletePost}=postSlice.actions
-export default postSlice.reducer
+export const { createPost, updatePost, deletePost } = postSlice.actions;
+export default postSlice.reducer;
