@@ -25,16 +25,17 @@ function Header() {
       active: !authStatus,
   },
   {
-      name: "All Products",
-      slug: "/all-products",
+      name: "All Posts",
+      slug: "/all-posts",
       active: authStatus,
   },
   {
-      name: "Add Product",
-      slug: "/add-product",
+      name: "Add Post",
+      slug: "/add-post",
       active: authStatus,
   },
   ]
+
 
 
   return (

@@ -35,12 +35,14 @@ export default function PostForm({ post }) {
                 ...data,
                 featuredImage: file ? file.$id : undefined,
             });
-            if(dbPost) dispatch(updatePost({ ...data, featuredImage: file ? file.$id : undefined,slug:dbPost.$id}));
+            if(dbPost) dispatch(updatePost({ ...data,image:null, featuredImage: file ? file.$id : undefined,slug:dbPost.$id}));
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
             }
-        } else {
+        } 
+        
+        else {
             const file = await appwriteService.uploadFile(data.image[0]);
 
             if (file) {
@@ -50,6 +52,7 @@ export default function PostForm({ post }) {
 
                 if (dbPost) {
                     dispatch(createPost({ ...data, userId: userData.$id ,slug:dbPost.$id}))
+                    console.log(postCard)
                     navigate(`/post/${dbPost.$id}`);
                 }
             }
