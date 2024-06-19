@@ -2,7 +2,7 @@ import React from 'react'
 import service from '../appwrite/config'
 import {Link} from'react-router-dom'
 
-function PostCard({$id,title,featuredImage}) {
+function PostCard({$id,title,featuredImage,price}) {
 
   return (
     <div>
@@ -11,9 +11,15 @@ function PostCard({$id,title,featuredImage}) {
                 <div className='w-full justify-center mb-4'>
                     <img src={service.getFilePreview(featuredImage)} alt={title} />
                 </div>
-                <h2 className='text-xl font-bold'>
+                <div className='text-xl font-bold'>
+                    <h6>Product's Name </h6>
                     {title}
+                </div>
+                <h2 className='text-xl font-bold'>
+                   Price =
+                    {price} -/
                 </h2>
+                
             </div>
       </Link>
     </div>

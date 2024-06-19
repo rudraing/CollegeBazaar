@@ -9,8 +9,12 @@ function AllPosts() {
     const product=useSelector((state)=>state.post.posts)
     const [posts, setPosts] = useState([])
     const data=useLoaderData()
+    const [currUserId,setUserId]=useState('')
+    const selector=useSelector((state)=>state.auth.userData)
+
     useEffect(() => {
         appwriteService.getPosts().then((posts)=>setPosts(posts.documents))
+        setUserId(selector.$id)
     }, [])
     
   return (
@@ -18,9 +22,14 @@ function AllPosts() {
         <Container>
             <div className='flex flex-wrap'>
                 {posts.map((post) => (
-                    <div key={post.$id} className='p-2 w-1/4'>
-                        <PostCard {...post} />
-                    </div>
+
+                     post.userId!==currUserId?                    
+                     <div key={post.$id} className='p-2 w-1/4'>
+                             <PostCard {...post} />
+                     </div>
+                     : <div key={post.$id} className='p-2 w-1/4 bg-green-800'>
+                            <PostCard {...post} />
+                        </div>
                 ))}
             </div>
             </Container>
