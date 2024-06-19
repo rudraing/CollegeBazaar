@@ -8,6 +8,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import { AuthLayout, Login } from './components/index.js'
 
+import appwriteService from "./appwrite/config";
+import { useSelector } from 'react-redux'
 
 import AddPost from "./pages/AddPost";
 import Signup from './pages/Signup'
@@ -15,14 +17,24 @@ import EditPost from "./pages/EditPost";
 import Post from "./pages/Post";
 import AllPosts from "./pages/AllPosts";
 
+const setLoader=async ()=>{
+    console.log('mai call to ho rha hu')
+    const response=await appwriteService.getPosts()
+    console.log('docu',response.documents)
+    return response.documents
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    
     children: [
         {
+            //loader:setLoader,
             path: "/",
             element: <Home />,
+
         },
         {
             path: "/login",
