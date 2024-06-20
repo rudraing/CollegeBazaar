@@ -55,11 +55,21 @@ export default function Post() {
                                 </Link>
                             </div>
                             
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
+                            <Button bgColor="bg-red-500 h-10 mt-4"  onClick={deletePost}>
                                 Delete
                             </Button>
                         </div>
                     )}
+                    {
+                        !isAuthor && (
+                            <div className="flex absolute left-5 bottom-3">
+                                                        
+                            <Button bgColor="bg-green-500 h-10 mt-4"  >
+                                <h3>Buy Product </h3>
+                            </Button>
+                        </div>
+                        )
+                    }
                 
                     <div className="">
                         <div className="w-full mb-6">

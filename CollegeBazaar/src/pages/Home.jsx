@@ -28,13 +28,13 @@ function Home() {
             setListed(true);
         }
     }, [posts, currUserId]);
-
-    if (posts.length === 0) {
+    console.log(posts)
+    if (posts.length === 0 || !listed) {
         return (
             <div className="w-full py-8 mt-4 text-center">
                 <Container>
                     <div className="flex flex-wrap">
-                        <div className="p-2 w-full">
+                        <div className="p-2 w-full ">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
                                 Welcome to the COLLEGE BAZAAR
                                 <p className='text-xs'> No current posts  </p>
