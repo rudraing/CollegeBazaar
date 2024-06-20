@@ -1,9 +1,13 @@
 import React from 'react'
-function Logo({width='100px'}) {
+import service from '../appwrite/config'
+
+function Logo({width='100px',classname="w-1/2"}) {
+  const featuredImage="6673cd05000b2e375d59"
   return (
-    <div>
-      <img src='https://cloud.appwrite.io/v1/storage/buckets/667122c900374413a943/files/66716234002eb0ff0757/view?project=66711aa800050aac80a3&mode=admin'  />
+    <div className={`mt-3 ${classname}`}>
+       <img src={service.getFilePreview(featuredImage)}  />
     </div>
+
   )
 }
 
