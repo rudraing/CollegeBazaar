@@ -36,7 +36,8 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to read posts
+                                Welcome to the COLLEGE BAZAAR
+                                <p className='text-xs'> No current posts  </p>
                             </h1>
                         </div>
                     </div>

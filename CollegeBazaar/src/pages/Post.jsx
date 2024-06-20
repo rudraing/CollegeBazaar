@@ -27,43 +27,53 @@ export default function Post() {
     }, [slug, navigate]);
 
     const deletePost = () => {
-        appwriteService.deletePost(post.$id).then((status) => {
+        appwriteService.deletePost(post.$id).then((status=true) => {
             if (status) {
                 appwriteService.deleteFile(post.featuredImage);
                 navigate("/");
             }
-        });
+        });        
     };
 
     return post ? (
         <div className="py-8">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-200  flex mb-4 relative border rounded-xl p-2">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="ml-3 mr-20 rounded-xl w-200 h-80"
                     />
 
                     {isAuthor && (
-                        <div className="absolute right-6 top-6">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
-                                </Button>
-                            </Link>
+                        <div className="flex absolute right-6 bottom-3">
+                            <div className="p-4">
+                                <Link to={`/edit-post/${post.$id}`}>
+                                    <Button bgColor="bg-green-500" className="mr-3  ">
+                                        Edit
+                                    </Button>
+                                </Link>
+                            </div>
+                            
                             <Button bgColor="bg-red-500" onClick={deletePost}>
                                 Delete
                             </Button>
                         </div>
                     )}
-                </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
-                </div>
-                <div className="browser-css">
-                    {parse(post.description)}
+                
+                    <div className="">
+                        <div className="w-full mb-6">
+                            <h1 className="text-2xl font-bold">Product : {post.title}</h1>
+                        </div>
+                        <div className="w-full mb-6">
+                            <h1 className="text-2xl font-bold">Price (inr):   {post.price}-/</h1>
+                        </div>
+                        <div className="browser-css">
+                            Description :
+                            {parse(post.description)}
+                        </div>
                     </div>
+                </div>
             </Container>
         </div>
     ) : null;

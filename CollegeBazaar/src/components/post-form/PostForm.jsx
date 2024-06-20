@@ -21,6 +21,7 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
     const postCard=useSelector((state)=>state.post.posts)
     const dispatch=useDispatch()
+    
     const submit = async (data) => {
       console.log(data)
         if (post) {

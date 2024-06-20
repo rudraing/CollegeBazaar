@@ -27,8 +27,8 @@ function AllPosts() {
                      <div key={post.$id} className='p-2 w-1/4'>
                              <PostCard {...post} />
                      </div>
-                     : <div key={post.$id} className='p-2 w-1/4 bg-green-800'>
-                            <PostCard {...post} />
+                     : <div key={post.$id} className='p-2 w-1/4'>
+                            <PostCard {...post} color="bg-red-300"  />
                         </div>
                 ))}
             </div>
