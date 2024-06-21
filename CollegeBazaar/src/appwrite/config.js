@@ -32,7 +32,7 @@ export class Service{
                 }
             )
         } catch (error) {
-            console.log("Appwrite serive :: createPost :: error", error);
+            return null 
         }
     }
 
@@ -52,7 +52,7 @@ export class Service{
                 }
             )
         } catch (error) {
-            console.log("Appwrite serive :: updatePost :: error", error);
+           return null
         }
     }
 
@@ -66,7 +66,6 @@ export class Service{
             )
             return true
         } catch (error) {
-            console.log("Appwrite serive :: deletePost :: error", error);
             return false
         }
     }
@@ -80,7 +79,7 @@ export class Service{
             
             )
         } catch (error) {
-            console.log("Appwrite serive :: getPost :: error", error);
+            
             return false
         }
     }
@@ -94,7 +93,7 @@ export class Service{
             
             )
         } catch (error) {
-            console.log("Appwrite serive :: getPosts :: error", error);
+            
             return false
         }
     }
@@ -109,7 +108,7 @@ export class Service{
                 file
             )
         } catch (error) {
-            console.log("Appwrite serive :: uploadFile :: error", error);
+           
             return false
         }
     }
@@ -123,7 +122,7 @@ export class Service{
             )
             return true
         } catch (error) {
-            console.log("Appwrite serive :: deleteFile :: error", error);
+           
             return false
         }
     }

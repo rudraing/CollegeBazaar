@@ -15,7 +15,6 @@ const BuyerInfoCard = () => {
     const [post, setPost] = useState(null);
     const { id } = useParams();
     const userData = useSelector((state) => state.auth.userData);
-    console.log(userData.name);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,7 +28,7 @@ const BuyerInfoCard = () => {
                     }
                 })
                 .catch((error) => {
-                    console.error('Error fetching post:', error);
+                    
                     navigate('/');
                 });
         } else {

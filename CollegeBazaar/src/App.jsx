@@ -21,7 +21,7 @@ function App() {
         }
       })
       .catch((error) => {
-        console.error("Error fetching current user:", error);
+       
         dispatch(logout());
       })
       .finally(() => { // Wrap setLoading(false) in a function

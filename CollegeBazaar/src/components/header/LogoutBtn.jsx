@@ -8,7 +8,7 @@ function LogoutBtn() {
     const buttonHandler=()=>{
         authService.logout().then(()=>dispatch(logout()))
         .catch((error)=>{
-            console.log("authservice.logout throwing this error :",error)
+            throw error
         })
         
     }

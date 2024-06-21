@@ -19,9 +19,8 @@ import AllPosts from "./pages/AllPosts";
 import BuyNowPage from './pages/BuyNowPage.jsx'
 
 const setLoader=async ()=>{
-    console.log('mai call to ho rha hu')
+   
     const response=await appwriteService.getPosts()
-    console.log('docu',response.documents)
     return response.documents
 }
 

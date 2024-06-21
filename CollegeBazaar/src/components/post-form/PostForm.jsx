@@ -28,10 +28,10 @@ export default function PostForm({ post }) {
 
     
     const submit = async (data) => {
-      console.log(data)
+      
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
-            console.log(data)
+           
             appwriteService.deleteFile(post.featuredImage);
 
             const dbPost = await appwriteService.updatePost(post.$id, {
@@ -55,7 +55,7 @@ export default function PostForm({ post }) {
 
                 if (dbPost) {
                     dispatch(createPost({ ...data, userId: userData.$id ,slug:dbPost.$id}))
-                    console.log(postCard)
+                    
                     navigate(`/post/${dbPost.$id}`);
                 }
             }
