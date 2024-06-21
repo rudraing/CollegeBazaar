@@ -14,8 +14,8 @@ function AllPosts() {
 
     useEffect(() => {
         appwriteService.getPosts().then((posts)=>setPosts(posts.documents))
-        setUserId(selector.$id)
-    }, [])
+        if(selector) setUserId(selector.$id)
+    },)
     
   return (
     <div className='w-full py-8'>

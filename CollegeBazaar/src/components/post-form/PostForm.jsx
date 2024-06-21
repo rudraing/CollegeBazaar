@@ -87,7 +87,7 @@ export default function PostForm({ post }) {
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
             <div className="w-2/3 px-2">
                  <Input
-                    value={userData.name}
+                    value={userData?.name}
                     label="name :"
                     placeholder="name"
                     className="mb-4"
@@ -95,7 +95,7 @@ export default function PostForm({ post }) {
                     readOnly
                 />
                  <Input
-                    value={userData.email}
+                    value={userData?.email}
                     label="gmail :"
                     placeholder="gmail"
                     className="mb-4"

@@ -11,17 +11,12 @@ export class AuthService {
         .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
             
-        // console.log(conf.appwriteUrl === 'https://cloud.appwrite.io/v1');
-        // console.log(conf.appwriteProjectId === '66711aa800050aac80a3');
-        // console.log(conf.appwriteCollectionId === '667121bf000579badf8e');
-        // console.log(conf.appwriteBucketId === '667122c900374413a943');
-        // console.log(conf.appwriteDatabaseId === '6671219600366a290852');
     }
 
     async createAccount({email, password, name}) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
-            console.log(userAccount)
+           // console.log(userAccount)
             if (userAccount) {
                 // call another method
                 return this.login({email, password});
@@ -50,7 +45,7 @@ export class AuthService {
             console.log('Current user:', user);
             return user;
         } catch (error) {
-            console.error('Appwrite service :: getCurrentUser :: error', error);
+            console.log('Appwrite service :: getCurrentUser :: error', error);
             return null;
         }
     }
