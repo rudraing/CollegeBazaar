@@ -14,13 +14,15 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, description,price, featuredImage, status, userId}){
+    async createPost({name , gmail   , title, slug, description,price, featuredImage, status, userId}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug,
                 {
+                    name,
+                    gmail,
                     title,
                     description,
                     price,
@@ -89,8 +91,7 @@ export class Service{
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
-                
-
+            
             )
         } catch (error) {
             console.log("Appwrite serive :: getPosts :: error", error);
@@ -112,6 +113,7 @@ export class Service{
             return false
         }
     }
+
 
     async deleteFile(fileId){
         try {

@@ -16,6 +16,7 @@ import Signup from './pages/Signup'
 import EditPost from "./pages/EditPost";
 import Post from "./pages/Post";
 import AllPosts from "./pages/AllPosts";
+import BuyNowPage from './pages/BuyNowPage.jsx'
 
 const setLoader=async ()=>{
     console.log('mai call to ho rha hu')
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
             path: "/post/:slug",
             element: <Post />,
         },
+        {
+            path:"/BuyNow/:id",
+            element:<BuyNowPage/>,
+        }
     ],
 },
 ])

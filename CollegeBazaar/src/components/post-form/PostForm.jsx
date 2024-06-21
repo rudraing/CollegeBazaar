@@ -9,6 +9,8 @@ import { createPost, deletePost, updatePost } from "../../store/postSlice";
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
+            name:post?.name ||"",
+            gmail:post?.gmail||"",
             title: post?.title || "",
             slug: post?.$id || "",
             description: post?.description || "",
@@ -17,10 +19,13 @@ export default function PostForm({ post }) {
         },
     });
 
+
+
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
     const postCard=useSelector((state)=>state.post.posts)
     const dispatch=useDispatch()
+
     
     const submit = async (data) => {
       console.log(data)
@@ -84,6 +89,22 @@ export default function PostForm({ post }) {
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
             <div className="w-2/3 px-2">
+                 <Input
+                    value={userData.name}
+                    label="name :"
+                    placeholder="name"
+                    className="mb-4"
+                    {...register("name", { required: true })}
+                    readOnly
+                />
+                 <Input
+                    value={userData.email}
+                    label="gmail :"
+                    placeholder="gmail"
+                    className="mb-4"
+                    {...register("gmail", { required: true })}
+                    readOnly
+                />
                 <Input
                     label="Title :"
                     placeholder="Title"

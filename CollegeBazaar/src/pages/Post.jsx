@@ -48,7 +48,7 @@ export default function Post() {
                     {isAuthor && (
                         <div className="flex absolute right-6 bottom-3">
                             <div className="p-4">
-                                <Link to={`/edit-post/${post.$id}`}>
+                                <Link to={`/edit-post/${post.$id}`} state={{ post: post }}>
                                     <Button bgColor="bg-green-500" className="mr-3  ">
                                         Edit
                                     </Button>
@@ -63,10 +63,11 @@ export default function Post() {
                     {
                         !isAuthor && (
                             <div className="flex absolute left-5 bottom-3">
-                                                        
-                            <Button bgColor="bg-green-500 h-10 mt-4"  >
-                                <h3>Buy Product </h3>
-                            </Button>
+                            <Link to ={`/BuyNow/${post.$id}`}>
+                                <Button bgColor="bg-green-500 h-10 mt-4"  >
+                                    <h3>Buy Product </h3>
+                                </Button>
+                            </Link>           
                         </div>
                         )
                     }
@@ -85,6 +86,6 @@ export default function Post() {
                     </div>
                 </div>
             </Container>
-        </div>
+        </div>  
     ) : null;
 }
