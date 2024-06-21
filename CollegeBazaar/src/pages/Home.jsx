@@ -32,17 +32,19 @@ function Home() {
 
     if (posts.length === 0 || !listed) {
         return (
-            <div className="w-full py-8 mt-4 text-center">
+            <div className="w-full py-8 mt-4 text-center bg-amber-100 ">
                 <Container>
                     <div className="flex flex-col items-center justify-center">
-                        <h1 className="text-3xl font-bold mb-4 text-gray-800">
+                        <h1 className="text-3xl font-bold mb-4 text-yellow-600">
                             Welcome to College Bazaar
                         </h1>
-                        <p className="text-lg text-gray-600 mb-4">
+                        <p className="text-lg text-yellow-500 mb-10">
                             No current posts available.
                         </p>
-                        <p className="text-sm text-gray-500 mb-8">
+                        <p className="text-sm text-text-500 mb-10">
                             Start exploring and find something interesting!
+                            <br />
+                            "Discover, Buy, Sell – Transform Your Campus Experience!"
                         </p>
                     </div>
                 </Container>
