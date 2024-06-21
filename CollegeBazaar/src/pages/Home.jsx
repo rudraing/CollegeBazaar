@@ -8,6 +8,7 @@ function Home() {
     const [currUserId, setUserId] = useState('');
     const selector = useSelector((state) => state.auth.userData);
     const [listed, setListed] = useState(false);
+    const featuredImage="6673c7e6002b2921abb3"
 
     useEffect(() => {
         appwriteService.getPosts().then((posts) => {

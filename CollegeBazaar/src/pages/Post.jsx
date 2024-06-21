@@ -27,7 +27,7 @@ export default function Post() {
     }, [slug, navigate]);
 
     const deletePost = () => {
-        appwriteService.deletePost(post.$id).then((status=true) => {
+        appwriteService.deletePost(post.$id).then((status) => {
             if (status) {
                 appwriteService.deleteFile(post.featuredImage);
                 navigate("/");
@@ -46,7 +46,7 @@ export default function Post() {
                     />
 
                     {isAuthor && (
-                        <div className="flex absolute right-6 bottom-3">
+                        <div className="flex absolute mleft-3 bottom-3">
                             <div className="p-4">
                                 <Link to={`/edit-post/${post.$id}`} state={{ post: post }}>
                                     <Button bgColor="bg-green-500" className="mr-3  ">
