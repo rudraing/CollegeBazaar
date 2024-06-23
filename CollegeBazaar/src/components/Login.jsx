@@ -30,7 +30,7 @@ function Login() {
     }
 
     return (
-        <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 via-gray-300 to-gray-400 p-4'>
+        <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-orange-400 via-gray-300 to-orange-400 p-5'>
             <div className='w-full max-w-lg bg-white shadow-lg rounded-lg p-8 sm:p-10 border border-gray-200'>
                 <div className='mb-6 flex justify-center'>
                     <Logo width='100%' />

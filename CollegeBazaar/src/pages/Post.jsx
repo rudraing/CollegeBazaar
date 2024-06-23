@@ -3,17 +3,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Post() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
-   
     const navigate = useNavigate();
-
     const userData = useSelector((state) => state.auth.userData);
-    const product=useSelector((state)=>state.post.posts)
-    
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
     useEffect(() => {
@@ -37,54 +33,50 @@ export default function Post() {
     return post ? (
         <div className="py-8">
             <Container>
-                <div className="w-200  flex mb-4 relative border rounded-xl p-2">
+                <div className=" border-4 border-orange-100 max-w-3xl mx-auto rounded-xl overflow-hidden shadow-lg">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="ml-3 mr-20 rounded-xl w-200 h-80"
+                        className="w-full h-80 object-cover rounded-t-xl"
                     />
 
-                    {isAuthor && (
-                        <div className="flex absolute mleft-3 bottom-3">
-                            <div className="p-4">
-                                <Link to={`/edit-post/${post.$id}`} state={{ post: post }}>
-                                    <Button bgColor="bg-green-500" className="mr-3  ">
-                                        Edit
+                    <div className="p-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <h1 className="text-3xl font-bold text-gray-800">{post.title}</h1>
+                            {isAuthor && (
+                                <div className="flex">
+                                    <Link to={`/edit-post/${post.$id}`} state={{ post: post }}>
+                                        <Button bgColor="bg-green-500" className="mr-3">
+                                            Edit
+                                        </Button>
+                                    </Link>
+                                    <Button bgColor="bg-red-500" onClick={deletePost}>
+                                        Delete
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="mb-4">
+                            <h2 className="text-xl font-semibold text-yellow-600">Price (INR): {post.price}-/</h2>
+                        </div>
+
+                        <div className="mb-4 text-gray-700">
+                            Description: {parse(post.description)}
+                        </div>
+
+                        {!isAuthor && (
+                            <div>
+                                <Link to={`/BuyNow/${post.$id}`}>
+                                    <Button bgColor="bg-green-500">
+                                        <h3 className="text-lg font-semibold">Buy Now</h3>
                                     </Button>
                                 </Link>
                             </div>
-                            
-                            <Button bgColor="bg-red-500 h-10 mt-4"  onClick={deletePost}>
-                                Delete
-                            </Button>
-                        </div>
-                    )}
-                    {
-                        !isAuthor && (
-                            <div className="flex absolute left-5 bottom-3">
-                            <Link to ={`/BuyNow/${post.$id}`}>
-                                <Button bgColor="bg-green-500 h-10 mt-4"  >
-                                    <h3>Buy Product </h3>
-                                </Button>
-                            </Link>           
-                        </div>
-                        )
-                    }
-                
-                    <div className="">
-                        <div className="w-full mb-6">
-                            <h1 className="text-2xl font-bold">Product : {post.title}</h1>
-                        </div>
-                        <div className="w-full mb-6">
-                            <h1 className="text-2xl font-bold">Price (inr):   {post.price}-/</h1>
-                        </div>
-                        <div className="browser-css">
-                            Description :
-                            {parse(post.description)}
-                        </div>
+                        )}
                     </div>
                 </div>
             </Container>
-        </div>  
+        </div>
     ) : null;
 }

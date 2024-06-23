@@ -39,7 +39,7 @@ function Header() {
 
 
   return (
-    <header className='py-3 shadow bg-amber-500 mb-20'>
+    <header className='py-4 shadow bg-amber-500 '>
 
       <Container>
         <nav className='flex'>
@@ -55,7 +55,7 @@ function Header() {
               <li key={item.name}>
                 <button
                 onClick={() => navigate(item.slug)}
-                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full border m-2 text-white'
+                className='inline-bock px-6 py-2 duration-200 hover:bg-yellow-800 rounded-full border m-2 text-white'
                 >{item.name}</button>
               </li>
             ) : null

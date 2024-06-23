@@ -43,15 +43,15 @@ const BuyerInfoCard = () => {
 
 
     return (
-        <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden md:max-w-xl my-10">
+        <div className="max-w-md mx-auto text-yellow-600 shadow-lg rounded-lg overflow-hidden md:max-w-xl my-10">
             <div className="md:flex">
-                <div className="md:flex-shrink-0 w-full md:w-64">
-                    {post.featuredImage ? (
-                        <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
-                            className="object-cover w-full h-48 md:h-auto rounded-t-lg md:rounded-t-none md:rounded-l-lg"
-                        />
+            <div className="parent-class md:flex-shrink-0 w-full md:w-64 bg-none bg-transparent">
+                {post.featuredImage ? (
+                    <img
+                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        alt={post.title}
+                        className="object-cover w-full h-48 md:h-auto rounded-t-lg md:rounded-t-none md:rounded-l-lg bg-none bg-transparent"
+                    />
                     ) : (
                         <div className="bg-gray-400 flex items-center justify-center h-48 md:h-auto rounded-t-lg md:rounded-t-none md:rounded-l-lg">
                             <span className="text-gray-700">No Image Available</span>
@@ -61,7 +61,7 @@ const BuyerInfoCard = () => {
                 <div className="p-6 md:p-8 w-full">
                     <div className="flex items-center justify-between mb-4">
                         <div>
-                            <h1 className="inline-block bg-indigo-600 text-white text-xl px-3 py-1 rounded">OWNER'S INFORMATION</h1>
+                            <h1 className="inline-block  bg-amber-500 text-white text-xl px-3 py-1 rounded">OWNER'S INFORMATION</h1>
                           
                         </div>
                         {userData && post.userId === userData.$id && (
